@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: korporate-front-end
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: korporate-front-end
+  template:
+    metadata:
+      labels:
+        app: korporate-front-end
+    spec:
+      containers:
+      - name: korporate-front-end-container
+        image: gcr.io/grid-ai/korporate-apothecary-fe
+        ports:
+        - containerPort: 80

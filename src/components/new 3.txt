@@ -1,0 +1,40 @@
+const axios = require('axios');
+
+async function printURLGrid(url) {
+  try {
+    const resp = await axios.get(url);
+    const data = resp.data;
+    const characters = {};
+    let maxX = 0;
+    let maxY = 0;
+
+    data.split('\n').forEach((line) => {
+      const match = line.match(/([^\s]+)\s+(\d+)\s+(\d+)/);
+      if (match) {
+        const char = match[1];
+        const x = parseInt(match[2]);
+        const y = parseInt(match[3]);
+        characters[`${x},${y}`] = char;
+        maxX = Math.max(maxX, x);
+        maxY = Math.max(maxY, y);
+      }
+    });
+
+    const grid = Array(maxY + 1).fill(0).map(() => Array(maxX + 1).fill(' '));
+
+    Object.keys(characters).forEach((key) => {
+      const [x, y] = key.split(',').map(Number);
+      grid[y][x] = characters[key];
+    });
+
+    grid.forEach((row) => {
+      console.log(row.join(''));
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Usage
+const url = "https://docs.google.com/document/d/e/2PACX-1vRMx5YQlZNa3ra8dYYxmv-QIQ3YJe8tbI3kqcuC7lQiZm-CSEznKfN_HYNSpoXcZIV3Y_O3YoUB1ecq/pub";
+printURLGrid(url);

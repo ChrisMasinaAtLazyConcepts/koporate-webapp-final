@@ -1,0 +1,108 @@
+Project Overview
+
+
+We propose the development of a comprehensive web application with eCommerce functionality, built using Java Spring Boot and React. 
+
+The project will be divided into three phases, each with distinct features and deliverables.
+
+Phase 1: eCommerce Site (Basic Functionality)
+
+Features:
+
+Admin login and sales dashboard
+Product management (CRUD)
+Order management (basic)
+Card payment integration (PayHost/PayFast)
+Online payment processing
+
+Deliverables:
+
+Fully functional eCommerce site with basic features
+Admin dashboard for managing products and orders
+Integration with payment gateway
+Estimated Cost: R 120,000 ( broken down into:
+Architecture design and backend development: R 40,000
+Frontend development (React): R 30,000
+Data modeling and database design: R 10,000
+Testing and QA: R 20,000
+CI/CD setup and deployment: R 20,000)
+Phase 2: Enhanced Features
+Features:
+Customer order management
+Instant EFT payments
+Invoicing and billing
+CRM features (basic)
+
+Deliverables:
+Enhanced order management system
+Integration with EFT payment gateway
+Invoicing and billing system
+Basic CRM features for customer management
+Estimated Cost: R 90,000 (broken down into:
+Backend development: R 30,000
+Frontend development: R 20,000
+Integration with EFT payment gateway: R 10,000
+CRM feature development: R 30,000)
+
+Phase 3: Full ERP System
+
+Features:
+
+Full ERP system with all missing features
+REST API integration with External Logistics partner for order fulfilment and E2E order tracking on the platform
+Advanced CRM features
+Orders,Payments Inventory and supply chain management
+Supply chain management
+
+
+Phase 1 Estimated Cost: R 55,000 (broken down into:
+
+Backend development: R 35,000 
+
+Frontend development: R 20,000  
+
+SAAS Cloud Enablement and Environment configuration and 
+Cloud Deployment R 10,000 (one-time setup fee)
+
+
+We will create CI/CD pipeline with GitHub Actions to trigger seamless builds to the cloud whenever our code is promoted to master branch
+Cloud platform :  AWS / Google GCP / Azure (Pending cost comparison)
+QA, SAAS Cloud Enablement and DevOps Configurations 
+
+
+Phase 2 75k
+
+Backend development: R 50,000 
+
+Frontend development: R 25,000  
+
+SAAS Cloud Enablement and Environment configuration and 
+Cloud Deployment R 10,000 (one-time setup fee)
+
+
+Advanced CRM features for customer management
+
+Backend development: R 50,000)
+
+Additional Services
+
+Free support for 6 months after deployment
+
+24/7 developer on call
+
+Annual support and maintenance: R 29,990 per annum (R 2,499 per month)
+We will set up a CI/CD pipeline for automated testing and deployment
+Estimated Cost: included in Phase 1 (R 20,000)
+Total Estimated Cost
+Phase 1: R 120,000
+Phase 2: R 90,000
+Phase 3: R 180,000
+Total: R 390,000
+Payment Terms
+30% payment upfront for each phase
+40% payment upon completion of each phase
+30% payment upon final deployment and testing
+Timeline
+Phase 1: 8 weeks
+Phase 2: 6 weeks
+Phase 3: 12 weeks
