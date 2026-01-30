@@ -330,26 +330,20 @@ const GlobalMap: React.FC = () => {
           />
 		 <div className="flex flex-wrap justify-center gap-3 py-10  bg-gray-100 ">
 			  {locations.map((country) => (
-				<div 
-				  key={country.name} 
-				  className="inline-flex items-center px-4 py-2  shadow-sm hover:shadow-md transition-all duration-200 hover:border-[#0F455D]/30"
-				>
-				  <div className="font-semibold text-xs text-gray-800 whitespace-nowrap">
-					{country.name}
-				  </div>
-				  
-				</div>
+	<div 
+  key={country.name} 
+  className="inline-flex items-center px-4 py-2 backdrop-blur-md bg-white/10 border border-white/20 rounded-lg"
+>
+  <div className="font-semibold text-xs text-gray-800 whitespace-nowrap">
+    {country.name}
+  </div>
+</div>
 				
 			  ))}
 				  
 			</div>
         </motion.div>
 
-       
-
-        
-      
-         
       </div>
     </section>
   );
