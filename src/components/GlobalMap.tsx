@@ -221,7 +221,7 @@ const GlobalMap: React.FC = () => {
     };
 
     // Check if API key is available
-    const apiKey = 'AIzaSyBp_hrQ6RPWS7CLmKC8bEd-GmbhKIXMLqs';
+    const apiKey = 'AIzaSyBgtmDrI8g4cW1Tf9nxnwp1Si8KqEdD-XM';
     if (!apiKey) {
       setMapError('Google Maps API key not configured');
       return;
@@ -274,7 +274,7 @@ const GlobalMap: React.FC = () => {
   }, []);
 
   return (
-    <section className=" bg-gray-900">
+    <section className="py-20 bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -282,53 +282,13 @@ const GlobalMap: React.FC = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="text-center mb-16"
-        ><br/>
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Our Footprint
+            Our Southern African Footprint
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Serving clients across Southern Africa with comprehensive marketing and business solutions
+            Serving clients across Southern Africa and the SADC region.
           </p>
-          
-          {/* Country Statistics */}
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center"
-            >
-              <div className="text-3xl font-bold text-white mb-2">7</div>
-              <div className="text-gray-300">Countries</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center"
-            >
-              <div className="text-3xl font-bold text-white mb-2">11</div>
-              <div className="text-gray-300">Cities</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center"
-            >
-              <div className="text-3xl font-bold text-white mb-2">SADC</div>
-              <div className="text-gray-300">Regional Coverage</div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center"
-            >
-              <div className="text-3xl font-bold text-white mb-2">1</div>
-              <div className="text-gray-300">Head Office</div>
-            </motion.div>
-          </div>
         </motion.div>
 
         <motion.div
@@ -370,7 +330,26 @@ const GlobalMap: React.FC = () => {
           />
         </motion.div>
 
+       
 
+        {/* Regional Coverage Summary */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="bg-gradient-to-r from-[#0F455D] to-[#105569] rounded-2xl p-8 text-white"
+        >
+      
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+            {countryInfo.map((country) => (
+              <div key={country.name} className="text-center">
+                <div className="text-3xl mb-2">{country.flag}</div>
+                <div className="font-semibold text-sm">{country.name}</div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
