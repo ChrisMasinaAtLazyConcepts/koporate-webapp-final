@@ -284,7 +284,7 @@ const GlobalMap: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Our Southern African Footprint
+            Our Footprint
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Serving clients across Southern Africa and the SADC region.
@@ -328,28 +328,28 @@ const GlobalMap: React.FC = () => {
             className="w-full h-[600px]" 
             style={{ visibility: isMapLoaded ? 'visible' : 'hidden' }}
           />
+		 <div className="flex flex-wrap justify-center gap-3 py-10">
+  {locations.map((country) => (
+    <div 
+      key={country.name} 
+      className="inline-flex items-center bg-white px-4 py-2  shadow-sm hover:shadow-md transition-all duration-200 hover:border-[#0F455D]/30"
+    >
+      <div className="font-semibold text-xs text-gray-800 whitespace-nowrap">
+        {country.name}
+      </div>
+	  
+    </div>
+	
+  ))}
+	  
+</div>
         </motion.div>
 
        
 
-        {/* Regional Coverage Summary */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-r from-[#0F455D] to-[#105569] rounded-2xl p-8 text-white"
-        >
+        
       
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-            {countryInfo.map((country) => (
-              <div key={country.name} className="text-center">
-                <div className="text-3xl mb-2">{country.flag}</div>
-                <div className="font-semibold text-sm">{country.name}</div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
+         
       </div>
     </section>
   );
