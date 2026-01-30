@@ -77,7 +77,7 @@ const Home: React.FC = () => {
       </div>
       
       {/* Main Content Container - Centered with proper padding */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 ">
        
         {/* Services Section with Enhanced Layout */}
         <section className="mb-24 md:mb-32" >
@@ -91,8 +91,8 @@ const Home: React.FC = () => {
         </section>
         
         {/* Contact Form Section with Professional Layout */}
-        <section className="mb-24 md:mb-32">
-          <div className="mb-12 text-center">
+        <section className="mb-24 md:mb-32  ">
+          <div className="mb-12 text-center" >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Get In Touch
             </h2>
@@ -102,9 +102,9 @@ const Home: React.FC = () => {
             <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 ">
             {/* Contact Information Sidebar */}
-            <div className="lg:col-span-1 bg-gray-900 text-white rounded-2xl p-8 shadow-lg">
+            <div className="lg:col-span-1 bg-[#0F455D] text-white rounded-2xl p-8 shadow-lg">
               <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
               
               <div className="space-y-6">
