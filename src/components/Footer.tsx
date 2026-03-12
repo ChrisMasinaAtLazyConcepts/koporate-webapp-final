@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white/90">
+    <footer className="bg-[#0F455D] text-white/90">
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

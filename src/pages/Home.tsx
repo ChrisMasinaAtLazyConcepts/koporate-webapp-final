@@ -9,7 +9,6 @@ const Home: React.FC = () => {
   return (
     <div className="pt-1">
       <Hero />
-      <AboutSection />
       <ServicesSection />
       <GlobalMap />
       <ContactForm />
