@@ -204,7 +204,7 @@ const About: React.FC = () => {
           </button>
         </div>
         
-        <div className="relative h-48 overflow-hidden">
+        <div className="relative h-48 w-48 overflow-hidden">
           <img
 				src={member.image}
 				alt={member.name}

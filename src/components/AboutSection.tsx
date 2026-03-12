@@ -8,18 +8,7 @@ const AboutSection: React.FC = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="text-center mb-16"
-        >
-          <strong className='text-xl'>‘APOTHECARY’</strong>
-          <br/>
-          <p className="text-l text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            A term we use to describe creative alchemist of brand solutions — blending strategy and innovation to craft
-            tailored remedies that grow and transform businesses.
-          </p>
-          <br/>
-		  Korporate Apothecary (Pty) Ltd encompasses values such as maintaining client rapport (positive energy), professionalism, diversity,integrity and ensuring to always put quality first.
-        </motion.div>
+       
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}

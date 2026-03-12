@@ -19,63 +19,23 @@ const GlobalMap: React.FC = () => {
     { name: 'Luanda', lat: -8.8390, lng: 13.2894, description: 'Angola Operations', country: 'Angola' },
     { name: 'Harare', lat: -17.8252, lng: 31.0335, description: 'Zimbabwe Operations', country: 'Zimbabwe' },
     { name: 'Gaborone', lat: -24.6282, lng: 25.9231, description: 'Botswana Operations', country: 'Botswana' },
-    // Namibia remains as previously
     { name: 'Windhoek', lat: -22.5609, lng: 17.0658, description: 'Namibia Operations', country: 'Namibia' },
   ];
 
-  // Country information for the info cards
-  const countryInfo = [
-    {
-      name: 'South Africa',
-      flag: '🇿🇦',
-      cities: ['Johannesburg (Head Office)', 'Durban', 'Gqeberha', 'Cape Town'],
-      operations: 'Full-service operations across major regions',
-      color: '#007749' // Green from SA flag
-    },
-    {
-      name: 'Zambia',
-      flag: '🇿🇲',
-      cities: ['Lusaka'],
-      operations: 'Regional hub for central Africa operations',
-      color: '#198a00' // Zambia green
-    },
-    {
-      name: 'Mozambique',
-      flag: '🇲🇿',
-      cities: ['Maputo'],
-      operations: 'Coastal and logistics operations',
-      color: '#007168' // Mozambique teal
-    },
-    {
-      name: 'Angola',
-      flag: '🇦🇴',
-      cities: ['Luanda'],
-      operations: 'West Africa operations hub',
-      color: '#cc092f' // Angola red
-    },
-    {
-      name: 'Zimbabwe',
-      flag: '🇿🇼',
-      cities: ['Harare'],
-      operations: 'Landlocked operations and distribution',
-      color: '#de2910' // Zimbabwe red
-    },
-    {
-      name: 'Botswana',
-      flag: '🇧🇼',
-      cities: ['Gaborone'],
-      operations: 'Southern region operations',
-      color: '#75aadb' // Botswana blue
-    },
-    {
-      name: 'Namibia',
-      flag: '🇳🇦',
-      cities: ['Windhoek'],
-      operations: 'Southwest Africa operations',
-      color: '#003580' // Namibia blue
-    }
-  ];
+  // Define colors for different countries
+  const countryColors: Record<string, string> = {
+    'South Africa': '#2563eb',     // Blue for South Africa
+    'Zambia': '#10b981',           // Green for Zambia
+    'Mozambique': '#f59e0b',       // Amber for Mozambique
+    'Angola': '#ef4444',           // Red for Angola
+    'Zimbabwe': '#8b5cf6',         // Purple for Zimbabwe
+    'Botswana': '#06b6d4',         // Cyan for Botswana
+    'Namibia': '#f97316',          // Orange for Namibia
+  };
 
+  // Group locations by country for legend
+  const countries = Array.from(new Set(locations.map(loc => loc.country)));
+  
   useEffect(() => {
     const initMap = () => {
       try {
@@ -90,24 +50,9 @@ const GlobalMap: React.FC = () => {
           return;
         }
 
-        // Calculate center to show all Southern Africa locations
-        const bounds = new google.maps.LatLngBounds();
-        locations.forEach(location => {
-          bounds.extend(new google.maps.LatLng(location.lat, location.lng));
-        });
-
         const map = new google.maps.Map(mapRef.current, {
           zoom: 4,
-          center: { lat: -15.0, lng: 25.0 }, // Center on Southern Africa
-          restriction: {
-            latLngBounds: {
-              north: 0,   // Exclude North Africa
-              south: -35,  // Bottom of South Africa
-              east: 45,    // Eastern Mozambique coast
-              west: 10     // Western Angola coast
-            },
-            strictBounds: false
-          },
+          center: { lat: -20.0, lng: 24.0 }, // Center for Southern Africa
           styles: [
             {
               featureType: 'all',
@@ -117,98 +62,89 @@ const GlobalMap: React.FC = () => {
             {
               featureType: 'water',
               elementType: 'geometry',
-              stylers: [{ color: '#e1f5fe' }], // Light blue for water
+              stylers: [{ color: '#e9e9e9' }],
             },
             {
-              featureType: 'landscape',
-              elementType: 'geometry',
-              stylers: [{ color: '#f0f4c3' }], // Light green for land
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry',
-              stylers: [{ color: '#ffffff' }],
-            },
-            {
-              featureType: 'road',
+              featureType: 'water',
               elementType: 'labels.text.fill',
-              stylers: [{ color: '#757575' }],
+              stylers: [{ color: '#9e9e9e' }],
             },
           ],
         });
 
-        // Fit map to show all markers
-        map.fitBounds(bounds);
+        // Create bounds to fit all markers
+        const bounds = new google.maps.LatLngBounds();
 
-        // Create markers with different colors by country
-        const countryColors: Record<string, string> = {
-          'South Africa': '#0F455D',    // Dark blue
-          'Zambia': '#4CAF50',          // Green
-          'Mozambique': '#2196F3',      // Blue
-          'Angola': '#F44336',          // Red
-          'Zimbabwe': '#FF9800',        // Orange
-          'Botswana': '#9C27B0',        // Purple
-          'Namibia': '#795548',         // Brown
-        };
-
+        // Create markers for each location
         locations.forEach((location) => {
-          const markerColor = countryColors[location.country] || '#000000';
+          const position = { lat: location.lat, lng: location.lng };
           
+          // Extend bounds to include this location
+          bounds.extend(position);
+
+          // Define normal and hover icons
+          const normalIcon: google.maps.Symbol = {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 8,
+            fillColor: countryColors[location.country] || '#2563eb',
+            fillOpacity: 1,
+            strokeColor: '#ffffff',
+            strokeWeight: 2,
+          };
+
+          const hoverIcon: google.maps.Symbol = {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 10,
+            fillColor: countryColors[location.country] || '#2563eb',
+            fillOpacity: 1,
+            strokeColor: '#ffffff',
+            strokeWeight: 3,
+          };
+
+          // Create marker
           const marker = new google.maps.Marker({
-            position: { lat: location.lat, lng: location.lng },
+            position: position,
             map: map,
             title: `${location.name}, ${location.country}`,
-            icon: {
-              path: google.maps.SymbolPath.CIRCLE,
-              scale: 10,
-              fillColor: markerColor,
-              fillOpacity: 0.8,
-              strokeColor: '#ffffff',
-              strokeWeight: 2,
-            },
-            animation: google.maps.Animation.DROP,
+            icon: normalIcon,
           });
 
+          // Create info window
           const infoWindow = new google.maps.InfoWindow({
             content: `
-              <div class="p-3 max-w-xs">
+              <div class="p-3 min-w-[200px]">
                 <div class="flex items-center mb-2">
-                  <div class="w-3 h-3 rounded-full mr-2" style="background-color: ${markerColor}"></div>
-                  <h3 class="font-bold text-gray-900 text-lg">${location.name}</h3>
+                  <div class="w-3 h-3 rounded-full mr-2" style="background-color: ${countryColors[location.country] || '#2563eb'}"></div>
+                  <h3 class="font-bold text-gray-800 text-lg">${location.name}</h3>
                 </div>
-                <div class="mb-2">
-                  <span class="inline-block px-2 py-1 text-xs font-semibold rounded bg-gray-100 text-gray-700">
-                    ${location.country}
-                  </span>
-                </div>
-                <p class="text-gray-700">${location.description}</p>
-                <div class="mt-3 pt-3 border-t border-gray-200">
-                  <p class="text-sm text-gray-600">
-                    <strong>Services:</strong> Full marketing and business solutions
-                  </p>
-                </div>
+                <p class="text-sm text-gray-600 mb-1"><strong>Country:</strong> ${location.country}</p>
+                <p class="text-sm text-gray-600">${location.description}</p>
               </div>
             `,
           });
 
+          // Add click listener to open info window
           marker.addListener('click', () => {
+            // Close any open info windows
+            infoWindow.close();
+            // Open this info window
             infoWindow.open(map, marker);
           });
 
-          // Add hover effect
+          // Add mouseover effect
           marker.addListener('mouseover', () => {
-            marker.setIcon({
-              ...marker.getIcon(),
-              scale: 12,
-            });
+            marker.setIcon(hoverIcon);
           });
 
+          // Add mouseout effect
           marker.addListener('mouseout', () => {
-            marker.setIcon({
-              ...marker.getIcon(),
-              scale: 10,
-            });
+            marker.setIcon(normalIcon);
           });
+        });
+
+        // Fit map to bounds
+        map.fitBounds(bounds, {
+          top: 50, right: 50, bottom: 50, left: 50
         });
 
         setIsMapLoaded(true);
@@ -221,7 +157,7 @@ const GlobalMap: React.FC = () => {
     };
 
     // Check if API key is available
-    const apiKey = 'AIzaSyBgtmDrI8g4cW1Tf9nxnwp1Si8KqEdD-XM';
+    const apiKey = 'AIzaSyBqbY-JHa7K4HnhCDm2j_7VHYSqTcRWoUo';
     if (!apiKey) {
       setMapError('Google Maps API key not configured');
       return;
@@ -284,11 +220,25 @@ const GlobalMap: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Our Footprint
+            Our Regional Footprint
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Serving clients across Southern Africa and the SADC region.
+            Serving clients across Southern Africa with comprehensive marketing solutions
           </p>
+          <br/>
+          
+          {/* Country Legend */}
+          <div className="inline-flex flex-wrap justify-center gap-4 bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 mb-8">
+            {countries.map((country, index) => (
+              <div key={index} className="flex items-center">
+                <div 
+                  className="w-4 h-4 rounded-full mr-2" 
+                  style={{ backgroundColor: countryColors[country] || '#2563eb' }}
+                />
+                <span className="text-white text-sm">{country}</span>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         <motion.div
@@ -296,7 +246,7 @@ const GlobalMap: React.FC = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-white rounded-2xl shadow-2xl overflow-hidden relative mb-12"
+          className="bg-white rounded-2xl shadow-2xl overflow-hidden relative"
         >
           {mapError && (
             <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
@@ -318,32 +268,75 @@ const GlobalMap: React.FC = () => {
             <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
               <div className="text-center">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-                <p className="text-gray-600">Loading Southern Africa map...</p>
+                <p className="text-gray-600">Loading regional map...</p>
               </div>
             </div>
           )}
           
           <div 
             ref={mapRef} 
-            className="w-full h-[600px]" 
+            className="w-full h-96" 
             style={{ visibility: isMapLoaded ? 'visible' : 'hidden' }}
           />
-		 <div className="flex flex-wrap justify-center gap-3 py-10  bg-gray-100 ">
-			  {locations.map((country) => (
-	<div 
-  key={country.name} 
-  className="inline-flex items-center px-4 py-2 backdrop-blur-md bg-white/10 border border-white/20 rounded-lg"
->
-  <div className="font-semibold text-xs text-gray-800 whitespace-nowrap">
-    {country.name}
-  </div>
-</div>
-				
-			  ))}
-				  
-			</div>
         </motion.div>
 
+        {/* Country Summary */}
+        <div className="mt-12 mb-8">
+          <h3 className="text-2xl font-bold text-white mb-6 text-center">Our Presence Across 7 Countries</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {countries.map((country, index) => {
+              const countryLocations = locations.filter(loc => loc.country === country);
+              return (
+                <div 
+                  key={index}
+                  className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-4 border border-gray-700/50"
+                  style={{ borderLeftColor: countryColors[country] || '#2563eb', borderLeftWidth: '4px' }}
+                >
+                  <div className="flex items-center mb-3">
+                    <div 
+                      className="w-5 h-5 rounded-full mr-3" 
+                      style={{ backgroundColor: countryColors[country] || '#2563eb' }}
+                    />
+                    <h4 className="text-lg font-bold text-white">{country}</h4>
+                  </div>
+                  <div className="space-y-2">
+                    {countryLocations.map((loc, idx) => (
+                      <div key={idx} className="flex items-center">
+                        <div className="w-2 h-2 rounded-full bg-white/60 mr-2"></div>
+                        <div>
+                          <p className="text-white text-sm font-medium">{loc.name}</p>
+                          <p className="text-gray-400 text-xs">{loc.description}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Location Dots Legend */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-8">
+          {locations.map((location, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <div 
+                className="w-4 h-4 rounded-full mx-auto mb-2"
+                style={{ backgroundColor: countryColors[location.country] || '#2563eb' }}
+              />
+              <h4 className="text-white font-semibold text-sm">{location.name}</h4>
+              <p className="text-gray-400 text-xs">{location.country}</p>
+              <p className="text-gray-500 text-xs mt-1">{location.description}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

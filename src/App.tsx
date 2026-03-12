@@ -11,7 +11,6 @@ import Services from './pages/Services';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import { AuthProvider } from './contexts/AuthContext';
-import Clients from './pages/Clients';
 import WhatsAppChatBot from './components/WhatsAppChatBot';
 import Inbox from './pages/Inbox';
 import ServicesSection from './components/ServicesSection';

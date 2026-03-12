@@ -14,8 +14,8 @@
 body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
-  color: #1A1A1A;
-  background-color: #F9F9F9;
+  color: #1f2937;
+  background-color: #ffffff;
 }
 
 html {
@@ -34,39 +34,6 @@ html {
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 4px;
-}
-
-
-.bg-primary {
-  background-color: #1A1A1A; /* Midnight Black */
-}
-
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.bg-secondary {
-  background-color: #00CFC1; /* Electric Teal */
-}
-
-.text-primary {
-  color: #1A1A1A; /* Midnight Black */
-}
-
-.text-secondary {
-  color: #00CFC1; /* Electric Teal */
-}
-
-.font-bold {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-}
-
-.font-regular {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
 }
 
 ::-webkit-scrollbar-thumb:hover {
