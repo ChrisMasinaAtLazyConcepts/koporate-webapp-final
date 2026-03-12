@@ -10,20 +10,25 @@ const Hero: React.FC = () => {
 
   const slides = [
     {
-      image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
-      title: 'Creative Brand Alchemists',
+      image: '/assets/images/gifting2.jpg',
+      title: 'Corporate Gifting & Branding',
       subtitle: 'Transforming businesses through strategic innovation and creative excellence',
     },
     {
-      image: 'https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
+      image:  '/assets/images/growth.jfif',
       title: 'Events & Activations',
       subtitle: 'Creating memorable experiences that captivate and engage your audience',
     },
     {
       image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop',
-      title: 'Strategy & Logistics',
+      title: 'Strategy & Growth',
       subtitle: 'Comprehensive solutions that drive growth and deliver real results',
     },
+	  {
+      image: '/assets/images/logistics.png',
+      title: 'Logistics',
+      subtitle: 'Comprehensive solutions that drive growth and deliver real results',
+    }
   ];
 
   useEffect(() => {
@@ -45,7 +50,7 @@ const Hero: React.FC = () => {
   return (
     <section className="relative">
  {/* Top Banner with Logo */}
-<motion.div className="pl-10 bg-[#0F455D] flex flex-col md:flex-row items-center w-full">
+<motion.div className="pl-12 bg-[#0F455D] flex flex-col md:flex-row items-center w-full">
   <div className="md:w-2/3 pl-25">
     <div className="py-6">
       {/* Main Heading */}
@@ -146,6 +151,7 @@ const Hero: React.FC = () => {
 		
       </div>
 	    <div className="mb-8">
+		<br/>
               <motion.div
 				  initial={{ opacity: 0, y: 30 }}
 				  whileInView={{ opacity: 1, y: 0 }}

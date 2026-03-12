@@ -30,7 +30,7 @@ const services = [
     title: 'Strategy & Growth',
     description: 'Comprehensive strategic planning and logistics management to ensure your campaigns run smoothly and deliver maximum impact.',
     image: '/assets/images/strategy.PNG',
-    image2: '/assets/images/events.jpg',
+    image2: '/assets/images/strategy.PNG',
     features: [
         'Brand Positioning',
         'Trade Route to Market Modelling',

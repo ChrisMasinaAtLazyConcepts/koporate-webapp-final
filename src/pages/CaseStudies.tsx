@@ -157,8 +157,7 @@ From concept to completion, we ensure every detail aligns with brand standards a
   return (
     <div className="pt-1 min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Our Approach Section */}
-      <section className="py-0 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     
        <section className="relative bg-gradient-to-r from-[#0F455D] to-[#105569] text-white overflow-hidden">
   <div className="absolute inset-0 bg-black/20" />
   <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 md:py-20">
@@ -306,8 +305,6 @@ From concept to completion, we ensure every detail aligns with brand standards a
               </div>
             </div>
           </motion.div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-white">
