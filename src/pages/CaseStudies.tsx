@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin } from 'lucide-react';
+import { MapPin,FileText } from 'lucide-react';
 
 interface Project {
   id: string;
@@ -157,23 +157,34 @@ From concept to completion, we ensure every detail aligns with brand standards a
   return (
     <div className="pt-1 min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Our Approach Section */}
-      <section className="py-16 bg-white">
+      <section className="py-0 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="mb-16 text-center"
-          >
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Our <span className="text-[#0F455D]">Case Studies</span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore our portfolio of successful brand activations and creative solutions
-            </p>
-          </motion.div>
-
+       <section className="relative bg-gradient-to-r from-[#0F455D] to-[#105569] text-white overflow-hidden">
+  <div className="absolute inset-0 bg-black/20" />
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 md:py-20">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className="text-center"
+    >
+     <div className="flex flex-col items-center justify-center text-center">
+		  <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-sm mb-6 mx-auto">
+			<FileText className="w-10 h-10 text-white" />
+		  </div>
+		  
+		  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
+			Case Studies
+		  </h1>
+		  
+		  <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+			Explore our portfolio of successful brand activations and creative solutions
+		  </p>
+		</div>
+    </motion.div>
+  </div>
+</section>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -181,22 +192,15 @@ From concept to completion, we ensure every detail aligns with brand standards a
             viewport={{ once: true }}
             className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
+            <h4 className="text-2xl md:text-2xl font-bold text-black mb-8">
               <span className="text-[#0F455D]">‘APOTHECARY’</span>
-            </h2>
+            </h4>
             
             <p className="text-lg text-bold text-gray-700 leading-relaxed">
               A term we use to describe creative alchemist of brand solutions — blending strategy and innovation to craft
               tailored remedies that grow and transform businesses.
             </p>
-            <motion.div className="text-center mb-16">
-              <br/>
-              <p className="text-l text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                We value sustainable growth and focus on maintaining positive and progressive client
-                relationships that foster respect and creativity in the long-term business growth journey.
-              </p>
-              <br/>
-            </motion.div>
+           
           </motion.div>
 
           {/* Project Grid Section */}

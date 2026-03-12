@@ -11,43 +11,36 @@ const Hero: React.FC = () => {
       <motion.div
         className="pl-10  bg-[#0F455D] flex flex-col md:flex-row items-center w-full h-80"
       >
-        <div className="md:w-2/3 pl-20">
+        <div className="md:w-2/3 pl-25">
           <div className="pt-10">
             {/* Main Heading */}
             <div className="mb-6 py-15">
               <br/>
               <br/>
               <br/>
-              <h5 className="text-white text-4xl md:text-4xl font-bold leading-tight">
-                TAILORED<br />
-                MARKETING<br />
-                SOLUTIONS
-              </h5>
+            <h5 className="pl-40 text-white text-4xl md:text-4xl font-bold leading-tight text-center">
+			  TAILORED<br />
+			  MARKETING<br />
+			  SOLUTIONS
+			</h5><br/>
+			   {/* Button */}
+               <div className="pl-40  text-center">
+				  <motion.button 
+					onClick={() => navigate('/contact')}
+					whileHover={{ scale: 1.05 }}
+					whileTap={{ scale: 0.95 }}
+					className="bg-[#105569] text-white px-10 hover:bg-white hover:text-[#105569] py-4 rounded-lg text-lg font-semibold shadow-lg transition-all duration-200"
+				  >
+					Talk to us
+				  </motion.button>
+				</div>
             </div>
             
             {/* Stacked Text */}
             <div className="mb-8">
               <div className="flex items-center gap-8">
-                {/* Stacked Text */}
-                <div className="pb-10 text-left">
-                  <p className="text-white text-xl md:text-xl leading-relaxed">
-                    We Brand<br />
-                    Create Events<br />
-                    And Travel to your Ideas
-                  </p>
-                </div>
                 
-                {/* Button */}
-                <div className="pl-40 text-center">
-                  <motion.button 
-                    onClick={() => navigate('/contact')}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="bg-[#105569] text-white px-10 hover:bg-white hover:text-[#105569] py-4 rounded-lg text-lg font-semibold shadow-lg transition-all duration-200"
-                  >
-                    Talk to us
-                  </motion.button>
-                </div>
+             
               </div>
             </div>
             
