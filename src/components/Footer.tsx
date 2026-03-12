@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
           
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white">Korporate Apothecary</h3>
+            <p className="font-semibold text-white">Korporate Apothecary</p>
            
             <div className="flex items-center space-x-4 pt-2">
               <a 

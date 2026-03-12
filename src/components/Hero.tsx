@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
         <div className="md:w-2/3 pl-25">
           <div className="pt-10">
             {/* Main Heading */}
-            <div className="mb-6 py-15">
+            <div className="mb-6 py-15 pl-10">
               <br/>
               <br/>
               <br/>
