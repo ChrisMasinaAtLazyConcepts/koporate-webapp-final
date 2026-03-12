@@ -103,25 +103,25 @@ const About: React.FC = () => {
     setIsLoaded(true);
   }, []);
 
-  // Virtual Business Card Component
+  // Updated Virtual Business Card Component with transparent overlay
   const VirtualBusinessCard = ({ member, index }: { member: any; index: number }) => (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      className="absolute top-0 left-0 right-0 bottom-0 bg-gradient-to-br from-[#0F455D] to-[#00CFC1] rounded-2xl p-6 text-white z-30 shadow-2xl"
+      className="relative bg-gradient-to-br from-[#0F455D] to-[#00CFC1] rounded-2xl p-6 text-white shadow-2xl"
       onClick={(e) => e.stopPropagation()}
     >
       <button
         onClick={() => setActiveCard(null)}
-        className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors"
+        className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors z-10 bg-black/20 rounded-full p-1 hover:bg-black/30"
       >
-        <X className="w-6 h-6" />
+        <X className="w-5 h-5" />
       </button>
       
-      <div className="h-full flex flex-col justify-center">
+      <div className="h-full flex flex-col">
         <div className="flex items-center gap-4 mb-6">
-          <div className="w-20 h-20 py-rounded-full overflow-hidden border-4 border-white/20">
+          <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white/30 flex-shrink-0">
             <img
               src={member.image}
               alt={member.name}
@@ -129,60 +129,58 @@ const About: React.FC = () => {
             />
           </div>
           <div>
-            <h3 className="text-2xl font-bold">{member.name}</h3>
-            <p className="text-white/90">{member.role}</p>
-            <p className="text-sm text-white/70">{member.department}</p>
+            <h3 className="text-xl font-bold">{member.name}</h3>
+            <p className="text-white/90 text-sm">{member.role}</p>
+            <p className="text-xs text-white/70">{member.department}</p>
           </div>
         </div>
         
-        <div className="space-y-4 mb-6">
+        <div className="space-y-3 mb-4">
           <p className="text-white/90 text-sm leading-relaxed">{member.bio}</p>
         </div>
         
-        <div className="space-y-3">
+        <div className="space-y-2">
           <a 
             href={`mailto:${member.email}`}
-            className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group"
+            className="flex items-center gap-2 text-white/80 hover:text-white transition-colors group text-sm"
           >
-            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20">
-              <Mail className="w-4 h-4" />
+            <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 flex-shrink-0">
+              <Mail className="w-3.5 h-3.5" />
             </div>
-            <span className="text-sm">{member.email}</span>
+            <span className="truncate">{member.email}</span>
           </a>
           
-          <div className="flex items-center gap-3 text-white/80">
-            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-              <Phone className="w-4 h-4" />
+          <div className="flex items-center gap-2 text-white/80 text-sm">
+            <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+              <Phone className="w-3.5 h-3.5" />
             </div>
-            <span className="text-sm">{member.phone}</span>
+            <span>{member.phone}</span>
           </div>
           
-          <div className="flex items-center gap-3 text-white/80">
-            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-              <MapPin className="w-4 h-4" />
+          <div className="flex items-center gap-2 text-white/80 text-sm">
+            <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+              <MapPin className="w-3.5 h-3.5" />
             </div>
-            <span className="text-sm">{member.location}</span>
+            <span>{member.location}</span>
           </div>
           
           <a 
             href={member.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 text-white/80 hover:text-white transition-colors group"
+            className="flex items-center gap-2 text-white/80 hover:text-white transition-colors group text-sm"
           >
-            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20">
-              <Linkedin className="w-4 h-4" />
+            <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 flex-shrink-0">
+              <Linkedin className="w-3.5 h-3.5" />
             </div>
-            <span className="text-sm">Connect on LinkedIn</span>
+            <span>Connect on LinkedIn</span>
           </a>
         </div>
-        
-
       </div>
     </motion.div>
   );
 
-  // Updated Team Member Card with hover effect
+  // Updated Team Member Card with circular design and hover overlay
   const TeamMemberCard = ({ member, index }: { member: any; index: number }) => (
     <motion.div
       key={index}
@@ -190,49 +188,43 @@ const About: React.FC = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="group relative"
+      className="group relative flex justify-center"
     >
       <div 
-        className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer relative h-full"
+        className="bg-white rounded-full overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer relative aspect-square w-full max-w-[280px]"
         onClick={() => setActiveCard(index)}
       >
         {/* Card overlay effect */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0F455D]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-end justify-center pb-6">
-          <button className="bg-white text-[#0F455D] px-6 py-2 rounded-full font-semibold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 flex items-center gap-2">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0F455D]/90 via-[#0F455D]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex flex-col items-center justify-end pb-8 rounded-full">
+          <button className="bg-white text-[#0F455D] px-4 py-2 rounded-full font-semibold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 flex items-center gap-2 text-sm shadow-lg">
             <Info className="w-4 h-4" />
             View Contact
           </button>
         </div>
         
-        <div className="relative h-48 w-48 overflow-hidden">
+        {/* Image container */}
+        <div className="relative w-full h-full rounded-full overflow-hidden">
           <img
-				src={member.image}
-				alt={member.name}
-				className="w-full h-full group-hover:scale-110 transition-transform duration-500 " 
-			  />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+            src={member.image}
+            alt={member.name}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-full"></div>
         </div>
-        <div className="p-6 relative">
-          <h4 className="font-bold text-lg text-gray-900 mb-1">{member.name}</h4>
-          <p className="text-[#0F455D] font-medium">{member.role}</p>
-          
-          {/* Quick contact info on hover */}
-          <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="flex items-center gap-2 text-sm text-gray-600 mb-1">
-              <Mail className="w-3 h-3" />
-              <span className="truncate">{member.email}</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <MapPin className="w-3 h-3" />
-              <span>{member.location.split(',')[0]}</span>
-            </div>
-          </div>
+        
+        {/* Name and role - positioned at bottom of circle */}
+        <div className="absolute bottom-0 left-0 right-0 p-4 text-center bg-gradient-to-t from-black/70 via-black/40 to-transparent text-white rounded-b-full">
+          <h4 className="font-bold text-lg truncate">{member.name}</h4>
+          <p className="text-sm text-white/90">{member.role}</p>
         </div>
       </div>
       
-      {/* Virtual Business Card Modal */}
+      {/* Virtual Business Card Modal with improved backdrop */}
       {activeCard === index && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div 
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+          onClick={() => setActiveCard(null)}
+        >
           <div className="relative w-full max-w-md">
             <VirtualBusinessCard member={member} index={index} />
           </div>
@@ -274,7 +266,6 @@ const About: React.FC = () => {
           className="absolute inset-0 flex items-center justify-center z-20"
         >
           <div className="text-center px-4">
-            
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={isLoaded ? { opacity: 1, y: 0 } : {}}
@@ -374,9 +365,7 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      
-      {/* Values Section */}
-      {/* Team Section */}
+      {/* Team Section with Circular Cards */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16 text-center">
@@ -387,7 +376,7 @@ const About: React.FC = () => {
               viewport={{ once: true }}
               className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
             >
-              Meet Our <span className="text-[#0F455D]">Leadership</span>
+              Meet Our Team<span className="text-[#0F455D]"></span>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -398,10 +387,10 @@ const About: React.FC = () => {
             >
               Click on any team member to view their virtual business card
             </motion.p>
-            <p className="text-gray-500">Hover for quick info, click for full details</p>
+            <p className="text-gray-500">Hover for details, click for full contact information</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
             {team.map((member, index) => (
               <TeamMemberCard key={index} member={member} index={index} />
             ))}
