@@ -47,37 +47,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="/" className="text-sm text-white/70 hover:text-white transition-colors duration-200">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="/about" className="text-sm text-white/70 hover:text-white transition-colors duration-200">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="/services" className="text-sm text-white/70 hover:text-white transition-colors duration-200">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="/case-studies" className="text-sm text-white/70 hover:text-white transition-colors duration-200">
-                  Case Studies
-                </a>
-              </li>
-              <li>
-                <a href="/contact" className="text-sm text-white/70 hover:text-white transition-colors duration-200">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
+        
 
           {/* Contact Info */}
           <div className="space-y-4">
