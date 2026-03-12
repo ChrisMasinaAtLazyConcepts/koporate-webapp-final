@@ -17,9 +17,7 @@ const AboutSection: React.FC = () => {
           viewport={{ once: true }}
           className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16"
         >
-          <p className="text-lg text-gray-700 leading-relaxed">
-            We are an independent and dynamic marketing agency that delivers individually tailored marketing solutions for businesses. Korporate Apothecary encompasses values such as client’s centricity, professionalism, diversity, integrity and we do not compromise on quality. In addition, we provide proactive, customer-focused, agile and stable solutions across the marketing and events sector for our clientele.
-          </p>
+         
         </motion.div>
       </div>
     </section>
