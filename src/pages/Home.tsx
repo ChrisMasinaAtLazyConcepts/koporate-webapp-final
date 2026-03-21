@@ -9,7 +9,7 @@ const Home: React.FC = () => {
   return (
     <div className="pt-1">
       <Hero />
-      <ServicesSection />
+      <ServicesSection id="services-section" />
       <GlobalMap />
       <ContactForm />
     </div>
