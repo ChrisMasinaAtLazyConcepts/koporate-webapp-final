@@ -49,39 +49,36 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative">
-      {/* Top Banner with Logo */}
-      <div className="w-full bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between py-6">
-            {/* Main Heading - Centered */}
-            <div className="flex-1"></div>
-            <div className="text-center">
-              <h6 className="text-[#0F455D] text-xl md:text-xl font-bold leading-tight">
-                TAILORED<br />
-                MARKETING<br />
-                SOLUTIONS
-              </h6>
-              <motion.button 
-                onClick={() => navigate('/contact')}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-[#105569] text-white px-10 hover:bg-white hover:text-[#105569] py-3 rounded-lg text-sm font-semibold shadow-lg transition-all duration-200 mt-5"
-              >
-                Talk to us
-              </motion.button>
-            </div>
-            {/* Logo - Far Right */}
-            <div className="flex-1 flex justify-end">
-              <img
-                src={'./assets/images/logo-large.PNG'}
-                alt={'Korporate Logo'}
-                className="w-40 h-40 object-contain"
-              />
-            </div>
-          </div>
-        </div>
+     {/* Top Banner with Logo - Smaller height h-40 */}
+<div className="w-full bg-white h-40">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+    <div className="flex items-center justify-between h-full">
+      <div className="flex-1"></div>
+      <div className="text-center">
+        <h6 className="text-[#0F455D] text-sm md:text-base font-bold leading-tight">
+          TAILORED<br />
+          MARKETING<br />
+          SOLUTIONS
+        </h6>
+        <motion.button 
+          onClick={() => navigate('/contact')}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="bg-[#105569] text-white px-6 hover:bg-white hover:text-[#105569] py-1.5 rounded-lg text-xs font-semibold shadow-lg transition-all duration-200 mt-2"
+        >
+          Talk to us
+        </motion.button>
       </div>
-
+      <div className="flex-1 flex justify-end">
+        <img
+          src={'./assets/images/logo-large.PNG'}
+          alt={'Korporate Logo'}
+          className="w-20 h-20 object-contain"
+        />
+      </div>
+    </div>
+  </div>
+</div>
       {/* Image Slider Section */}
       <div className="relative h-[500px] overflow-hidden">
         {/* Slides */}
