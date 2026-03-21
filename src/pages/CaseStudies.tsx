@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin,FileText } from 'lucide-react';
+import { MapPin, FileText } from 'lucide-react';
 
 interface Project {
   id: string;
@@ -155,82 +155,87 @@ From concept to completion, we ensure every detail aligns with brand standards a
   ];
 
   return (
-    <div className="pt-1 min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Our Approach Section */}
-     
-       <section className="relative bg-gradient-to-r from-[#0F455D] to-[#105569] text-white overflow-hidden">
-  <div className="absolute inset-0 bg-black/20" />
-  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-0 md:py-20">
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
-      className="text-center"
-    >
-     <div className="flex flex-col items-center justify-center text-center">
-		  <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-sm mb-6 mx-auto">
-			<FileText className="w-10 h-10 text-white" />
-		  </div>
-		  
-		  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
-			Case Studies
-		  </h1>
-		  
-		  <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-			Explore our portfolio of successful brand activations and creative solutions
-		  </p>
-		</div>
-    </motion.div>
-  </div>
-</section>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16"
-          >
-            <h4 className="text-2xl md:text-2xl font-bold text-black mb-8">
-              <span className="text-[#0F455D]">‘APOTHECARY’</span>
-            </h4>
-            
-            <p className="text-lg text-bold text-gray-700 leading-relaxed">
-              A term we use to describe creative alchemist of brand solutions — blending strategy and innovation to craft
-              tailored remedies that grow and transform businesses.
-            </p>
-           
-          </motion.div>
-
-          {/* Project Grid Section */}
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-r from-[#0F455D] to-[#105569] text-white overflow-hidden">
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="relative max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            className="text-center"
           >
-            <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              Our Work in <span className="text-[#0F455D]">Action</span>
-            </h3>
-            <p className="text-gray-600 text-center mb-12 max-w-3xl mx-auto">
-              Showcasing our successful projects and client partnerships across various industries
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
-                >
-                  <div className="relative h-56 overflow-hidden">
+            <div className="flex flex-col items-center justify-center text-center">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white/10 backdrop-blur-sm mb-6">
+                <FileText className="w-10 h-10 text-white" />
+              </div>
+              
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
+                Case Studies
+              </h1>
+              
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+                Explore our portfolio of successful brand activations and creative solutions
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Content Section - Full Width */}
+      <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Apothecary Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16"
+        >
+          <h4 className="text-2xl md:text-2xl font-bold text-black mb-8">
+            <span className="text-[#0F455D]">‘APOTHECARY’</span>
+          </h4>
+          
+          <p className="text-lg text-bold text-gray-700 leading-relaxed">
+            A term we use to describe creative alchemist of brand solutions — blending strategy and innovation to craft
+            tailored remedies that grow and transform businesses.
+          </p>
+        </motion.div>
+
+        {/* Project Grid Section - Full Width */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-3xl font-bold text-gray-900 mb-4 text-center">
+            Our Work in <span className="text-[#0F455D]">Action</span>
+          </h3>
+          <p className="text-gray-600 text-center mb-12 max-w-3xl mx-auto">
+            Showcasing our successful projects and client partnerships across various industries
+          </p>
+          
+          {/* List View - Single Column with Maximum Width */}
+          <div className="max-w-6xl mx-auto space-y-12">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+              >
+                <div className="flex flex-col lg:flex-row">
+                  {/* Image Section */}
+                  <div className="lg:w-2/5 relative h-64 lg:h-auto overflow-hidden">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     />
                     <div className="absolute top-4 left-4">
                       <span className="bg-[#0F455D] text-white px-3 py-1 rounded-full text-sm font-semibold">
@@ -239,24 +244,25 @@ From concept to completion, we ensure every detail aligns with brand standards a
                     </div>
                   </div>
                   
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-3">
+                  {/* Content Section */}
+                  <div className="lg:w-3/5 p-8">
+                    <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
                       <span className="text-sm text-[#0F455D] font-bold">{project.client}</span>
                       {project.year && (
                         <span className="text-sm text-gray-500">{project.year}</span>
                       )}
                     </div>
                     
-                    <h4 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#0F455D] transition-colors">
+                    <h4 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#0F455D] transition-colors">
                       {project.title}
                     </h4>
                     
-                    <p className="text-gray-600 mb-4">
+                    <p className="text-gray-600 mb-4 font-medium">
                       {project.description}
                     </p>
                     
                     <div className="mb-4">
-                      <p className="text-gray-700 text-sm line-clamp-3">
+                      <p className="text-gray-700 text-sm leading-relaxed">
                         {project.fullDescription}
                       </p>
                     </div>
@@ -279,32 +285,34 @@ From concept to completion, we ensure every detail aligns with brand standards a
                       </div>
                     )}
                   </div>
-                </motion.div>
-              ))}
-            </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
 
-            {/* Stats Section */}
-            <div className="mt-16 bg-gradient-to-r from-[#0F455D] to-[#105569] rounded-2xl p-8 md:p-12 text-white">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div>
-                  <div className="text-3xl md:text-4xl font-bold mb-2">100+</div>
-                  <div className="text-gray-300">Successful Projects</div>
-                </div>
-                <div>
-                  <div className="text-3xl md:text-4xl font-bold mb-2">50+</div>
-                  <div className="text-gray-300">Happy Clients</div>
-                </div>
-                <div>
-                  <div className="text-3xl md:text-4xl font-bold mb-2">98%</div>
-                  <div className="text-gray-300">Client Satisfaction</div>
-                </div>
-                <div>
-                  <div className="text-3xl md:text-4xl font-bold mb-2">9</div>
-                  <div className="text-gray-300">Provinces Covered</div>
-                </div>
+          {/* Stats Section */}
+          <div className="mt-16 bg-gradient-to-r from-[#0F455D] to-[#105569] rounded-2xl p-8 md:p-12 text-white">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              <div>
+                <div className="text-3xl md:text-4xl font-bold mb-2">100+</div>
+                <div className="text-gray-300">Successful Projects</div>
+              </div>
+              <div>
+                <div className="text-3xl md:text-4xl font-bold mb-2">50+</div>
+                <div className="text-gray-300">Happy Clients</div>
+              </div>
+              <div>
+                <div className="text-3xl md:text-4xl font-bold mb-2">98%</div>
+                <div className="text-gray-300">Client Satisfaction</div>
+              </div>
+              <div>
+                <div className="text-3xl md:text-4xl font-bold mb-2">9</div>
+                <div className="text-gray-300">Provinces Covered</div>
               </div>
             </div>
-          </motion.div>
+          </div>
+        </motion.div>
+      </div>
 
       {/* CTA Section */}
       <section className="py-20 bg-white">

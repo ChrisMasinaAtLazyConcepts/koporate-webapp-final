@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
       subtitle: 'Transforming businesses through strategic innovation and creative excellence',
     },
     {
-      image:  '/assets/images/growth.jfif',
+      image: '/assets/images/growth.jfif',
       title: 'Events & Activations',
       subtitle: 'Creating memorable experiences that captivate and engage your audience',
     },
@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
       title: 'Strategy & Growth',
       subtitle: 'Comprehensive solutions that drive growth and deliver real results',
     },
-	  {
+    {
       image: '/assets/images/logistics.png',
       title: 'Logistics',
       subtitle: 'Comprehensive solutions that drive growth and deliver real results',
@@ -49,42 +49,39 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative">
- {/* Top Banner with Logo */}
-<motion.div className="pl-12 bg-[#0F455D] flex flex-col md:flex-row items-center w-full">
-  <div className="md:w-2/3 pl-25">
-    <div className="py-6">
-      {/* Main Heading */}
-      <div className="pl-10">
-        <h6 className="pl-40 text-white text-xl md:text-xl font-bold leading-tight text-center">
-          TAILORED<br />
-          MARKETING<br />
-          SOLUTIONS
-        </h6>
-        {/* Button */}
-        <div className="pl-40 pt-5 text-center">
-          <motion.button 
-            onClick={() => navigate('/contact')}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-[#105569] text-white px-10 hover:bg-white hover:text-[#105569] py-3 rounded-lg text-sm font-semibold shadow-lg transition-all duration-200"
-          >
-            Talk to us
-          </motion.button>
+      {/* Top Banner with Logo */}
+      <div className="w-full bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between py-6">
+            {/* Main Heading - Centered */}
+            <div className="flex-1"></div>
+            <div className="text-center">
+              <h6 className="text-[#0F455D] text-xl md:text-xl font-bold leading-tight">
+                TAILORED<br />
+                MARKETING<br />
+                SOLUTIONS
+              </h6>
+              <motion.button 
+                onClick={() => navigate('/contact')}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-[#105569] text-white px-10 hover:bg-white hover:text-[#105569] py-3 rounded-lg text-sm font-semibold shadow-lg transition-all duration-200 mt-5"
+              >
+                Talk to us
+              </motion.button>
+            </div>
+            {/* Logo - Far Right */}
+            <div className="flex-1 flex justify-end">
+              <img
+                src={'./assets/images/logo-large.PNG'}
+                alt={'Korporate Logo'}
+                className="w-40 h-40 object-contain"
+              />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  
-  <div className="md:w-1/3">
-    <img
-      src={'./assets/images/logo-small.PNG'}
-      alt={'Korporate Logo sm'}
-      className="w-full h-auto object-contain"
-    />
-  </div>
-</motion.div>
-{/* Stacked Text */}
-          
+
       {/* Image Slider Section */}
       <div className="relative h-[500px] overflow-hidden">
         {/* Slides */}
@@ -113,7 +110,6 @@ const Hero: React.FC = () => {
                   >
                     {slide.title}
                   </motion.h2>
-                
                 </div>
               </div>
             </div>
@@ -148,27 +144,27 @@ const Hero: React.FC = () => {
             />
           ))}
         </div>
-		
       </div>
-	    <div className="mb-8">
-		<br/>
-              <motion.div
-				  initial={{ opacity: 0, y: 30 }}
-				  whileInView={{ opacity: 1, y: 0 }}
-				  transition={{ duration: 0.8, delay: 0.2 }}
-				  viewport={{ once: true }}
-				  className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16"
-				>
-				  <p className="text-lg text-gray-700 leading-relaxed">
-					At Korporate Apothecary, we're not just a marketing agency — we're your creative growth partners. 
-					Bold, independent, and driven by innovation, we craft tailored marketing solutions that move your 
-					business forward. We believe in putting you at the center of everything we do, combining 
-					professionalism with a passion for diversity, integrity, and uncompromising quality. From marketing 
-					to events, we offer proactive, agile, and reliable solutions designed to captivate your audience 
-					and deliver real results.
-				  </p>
-				</motion.div>
-            </div>
+      
+      <div className="mb-8">
+        <br/>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16 max-w-7xl mx-auto"
+        >
+          <p className="text-lg text-gray-700 leading-relaxed">
+            At Korporate Apothecary, we're not just a marketing agency — we're your creative growth partners. 
+            Bold, independent, and driven by innovation, we craft tailored marketing solutions that move your 
+            business forward. We believe in putting you at the center of everything we do, combining 
+            professionalism with a passion for diversity, integrity, and uncompromising quality. From marketing 
+            to events, we offer proactive, agile, and reliable solutions designed to captivate your audience 
+            and deliver real results.
+          </p>
+        </motion.div>
+      </div>
     </section>
   );
 };

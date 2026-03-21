@@ -5,10 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Upload, Send, X } from 'lucide-react';
 import toast from 'react-hot-toast';
-import GlobalMap from './GlobalMap';
 
-
-  let attachmentUrl = null;
 // EmailJS configuration
 const EMAILJS_CONFIG = {
   SERVICE_ID: 'service_cp98a4b',
@@ -62,7 +59,7 @@ const api = {
       fileName = file.name;
       fileType = file.type;
       fileSize = file.size;
-      data.attachmentUrl=file.webkitRelativePath;
+      data.attachmentUrl = file.webkitRelativePath;
     }
 
     const payload = {
@@ -206,7 +203,7 @@ const ContactForm: React.FC = () => {
 
       const enquiryID = result.enquiryId;
       // Send email via EmailJS
-      await sendEmailWithEmailJS(data, !!selectedFile,enquiryID);
+      await sendEmailWithEmailJS(data, !!selectedFile, enquiryID);
       console.log('Email sent successfully');
 
       toast.success('Enquiry submitted successfully!');
@@ -222,161 +219,182 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
-            Get In Touch
-          </h2>
-          <p className="text-xl text-grey max-w-2xl mx-auto text-bold">
-            Ready to transform your brand? Let's discuss your project and create something extraordinary together.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="bg-white rounded-2xl shadow-2xl p-8"
-        >
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name *
-                </label>
-                <input
-                  {...register('name')}
-                  type="text"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="Your full name"
-                />
-                {errors.name && (
-                  <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
-                )}
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address *
-                </label>
-                <input
-                  {...register('email')}
-                  type="email"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="your@email.com"
-                />
-                {errors.email && (
-                  <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-                )}
-              </div>
-
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number *
-                </label>
-                <input
-                  {...register('phone')}
-                  type="tel"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="+27 61 582 4373"
-                />
-                {errors.phone && (
-                  <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
-                )}
-              </div>
-
-              <div>
-                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                  Company *
-                </label>
-                <input
-                  {...register('company')}
-                  type="text"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                  placeholder="Your company name"
-                />
-                {errors.company && (
-                  <p className="mt-1 text-sm text-red-600">{errors.company.message}</p>
-                )}
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                Project Details *
-              </label>
-              <textarea
-                {...register('message')}
-                rows={5}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
-                placeholder="Tell us about your project, goals, and how we can help..."
+    <section id='banner-section' className="py-20 bg-gradient-to-br from-gray-50 to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+          {/* Left Side - Logo - Takes 1/3 of the space */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="hidden lg:flex justify-center items-center lg:col-span-1 pb-80"
+          >
+            <div className="relative w-full pb-40">
+              <img 
+                src="/assets/images/logo-small.PNG" 
+                alt="Korporate Apothecary"
+                className="w-full h-48 object-contain mb-8"
               />
-              {errors.message && (
-                <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
-              )}
-            </div>
-
-            {/* File Upload */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Attach File (Optional - Max 5MB)
-              </label>
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors relative">
-                {selectedFile ? (
-                  <div className="flex items-center justify-between bg-blue-50 rounded-lg p-3">
-                    <div className="flex items-center space-x-2">
-                      <Upload className="w-5 h-5 text-blue-600" />
-                      <span className="text-sm text-gray-700">{selectedFile.name}</span>
-                      <span className="text-xs text-gray-500">
-                        ({(selectedFile.size / 1024 / 1024).toFixed(2)} MB)
-                      </span>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={removeFile}
-                      className="text-red-500 hover:text-red-700 transition-colors"
-                    >
-                      <X className="w-4 h-4" />
-                    </button>
-                  </div>
-                ) : (
-                  <div>
-                    <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                    <p className="text-sm text-gray-600 mb-2">
-                      Click to upload or drag and drop
-                    </p>
-                    <p className="text-xs text-gray-500">PNG, JPG, PDF, DOC up to 10MB</p>
-                    <input
-                      type="file"
-                      onChange={handleFileSelect}
-                      accept="image/*,.pdf,.doc,.docx,.txt"
-                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                    />
-                  </div>
-                )}
+              <div className="text-center">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  Let's Create Something Amazing
+                </h3>
+                <p className="text-sm text-gray-600">
+                  Ready to transform your brand? Let's discuss your project and create something extraordinary together.
+                </p>
               </div>
             </div>
+          </motion.div>
 
-            <motion.button
-              type="submit"
-              disabled={isSubmitting}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full bg-[#00CFC1] text-white py-4 px-6 rounded-lg font-semibold text-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
-            >
-              <Send className="w-5 h-5" />
-              <span>{isSubmitting ? 'Submitting...' : 'Send Enquiry'}</span>
-            </motion.button>
-          </form>
-        </motion.div>
+          {/* Right Side - Form - Takes 2/3 of the space */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="w-full lg:col-span-2 pt-10"
+          >
+            <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10">
+              <div className="mb-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                  Get In Touch
+                </h2>
+              </div>
+
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      {...register('name')}
+                      type="text"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
+                      placeholder="Your full name"
+                    />
+                    {errors.name && (
+                      <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      {...register('email')}
+                      type="email"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
+                      placeholder="your@email.com"
+                    />
+                    {errors.email && (
+                      <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone Number *
+                    </label>
+                    <input
+                      {...register('phone')}
+                      type="tel"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
+                      placeholder="+27 61 582 4373"
+                    />
+                    {errors.phone && (
+                      <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                      Company *
+                    </label>
+                    <input
+                      {...register('company')}
+                      type="text"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all outline-none"
+                      placeholder="Your company name"
+                    />
+                    {errors.company && (
+                      <p className="mt-1 text-sm text-red-600">{errors.company.message}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    Project Details *
+                  </label>
+                  <textarea
+                    {...register('message')}
+                    rows={5}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all resize-none outline-none"
+                    placeholder="Tell us about your project, goals, and how we can help..."
+                  />
+                  {errors.message && (
+                    <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
+                  )}
+                </div>
+
+                {/* File Upload */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Attach File (Optional - Max 5MB)
+                  </label>
+                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-teal-400 transition-colors relative">
+                    {selectedFile ? (
+                      <div className="flex items-center justify-between bg-teal-50 rounded-lg p-3">
+                        <div className="flex items-center space-x-2">
+                          <Upload className="w-5 h-5 text-teal-600" />
+                          <span className="text-sm text-gray-700">{selectedFile.name}</span>
+                          <span className="text-xs text-gray-500">
+                            ({(selectedFile.size / 1024 / 1024).toFixed(2)} MB)
+                          </span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={removeFile}
+                          className="text-red-500 hover:text-red-700 transition-colors"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      </div>
+                    ) : (
+                      <div>
+                        <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                        <p className="text-sm text-gray-600 mb-2">
+                          Click to upload or drag and drop
+                        </p>
+                        <p className="text-xs text-gray-500">PNG, JPG, PDF, DOC up to 5MB</p>
+                        <input
+                          type="file"
+                          onChange={handleFileSelect}
+                          accept="image/*,.pdf,.doc,.docx,.txt"
+                          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <motion.button
+                  type="submit"
+                  disabled={isSubmitting}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full bg-teal-500 hover:bg-teal-600 text-white py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 shadow-md hover:shadow-lg"
+                >
+                  <Send className="w-5 h-5" />
+                  <span>{isSubmitting ? 'Submitting...' : 'Send Enquiry'}</span>
+                </motion.button>
+              </form>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

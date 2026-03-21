@@ -52,7 +52,7 @@ const Header = () => {
                 Home
               </Link>
               <Link 
-				  to="/#services-section" 
+				  to="/#services" 
 				  className="text-gray-600 hover:text-gray-900"
 				>
 				  Services
