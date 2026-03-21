@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
       subtitle: 'Transforming businesses through strategic innovation and creative excellence',
     },
     {
-      image: '/assets/images/growth.jfif',
+      image: '/assets/images/event.jfif',
       title: 'Events & Activations',
       subtitle: 'Creating memorable experiences that captivate and engage your audience',
     },
