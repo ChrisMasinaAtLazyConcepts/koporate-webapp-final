@@ -127,7 +127,7 @@ This activation demonstrates our expertise in creating impactful brand moments t
       title: 'KIWI Step Up Activation (Display)',
       client: 'KIWI',
       category: 'Retail Display',
-      image: './assets/images/cases/case8.PNG',
+      image: './assets/images/kiwi2.png',
       description: 'Premium product arrangement reinforcing brand message of shine, protection, and waterproofing.',
       fullDescription: `As part of the KIWI Step Up Activation, Korporate Apothecary curated a premium product display highlighting KIWI's trusted shoe care range. The setup featured their signature polishes and instant shine products — presented with a focus on quality, heritage, and everyday practicality.
 

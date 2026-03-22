@@ -73,7 +73,7 @@ const Hero: React.FC = () => {
         <img
           src={'./assets/images/logo-large.PNG'}
           alt={'Korporate Logo'}
-          className="w-20 h-20 object-contain"
+          className="w-40 h-40 object-contain"
         />
       </div>
     </div>
