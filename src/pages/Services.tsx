@@ -29,8 +29,8 @@ const services = [
     icon: TrendingUp,
     title: 'Strategy & Growth',
     description: 'Comprehensive strategic planning and logistics management to ensure your campaigns run smoothly and deliver maximum impact.',
-    image: '/assets/images/strategy.PNG',
-    image2: '/assets/images/strategy.PNG',
+    image: '/assets/images/strategy.jpg',
+    image2: '/assets/images/strategy.jpg',
     features: [
         'Brand Positioning',
         'Trade Route to Market Modelling',

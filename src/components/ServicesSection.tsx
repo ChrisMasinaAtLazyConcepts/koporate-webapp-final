@@ -3,11 +3,13 @@ import { motion } from 'framer-motion';
 import { Calendar, TrendingUp, Palette, Megaphone } from 'lucide-react';
 import Services from '../pages/Services';
 
-const ServicesSection: React.FC = () => {
+interface ServicesSectionProps {
+  id?: string;
+}
 
-
+const ServicesSection: React.FC<ServicesSectionProps> = ({ id }) => {
   return (
-    <section className="py-20 bg-white">
+    <section id={id} className="py-20 bg-white bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
      
 
